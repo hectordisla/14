@@ -24,12 +24,13 @@ class Car(models.Model):
     #Validacion
     @api.constrains('cv','colour','number_plate')
     def _validate(self):
-        if self.colour == "":
-            raise exceptions.ValidationError('El nombre del modelo no puede estar en blanco.')
-        elif self.cv <= 0:
-            raise exceptions.ValidationError('Los Caballos de fuerza, no pueden estar en 0.')
-        elif self.number_plate == "":
-            raise exceptions.ValidationError('La placa no puede estar vacia.')
+        for record in self:
+            if record.colour == "":
+                raise exceptions.ValidationError('El nombre del modelo no puede estar en blanco.')
+            elif record.cv <= 0:
+                raise exceptions.ValidationError('Los Caballos de fuerza, no pueden estar en 0.')
+            elif record.number_plate == "":
+                raise exceptions.ValidationError('La placa no puede estar vacia.')
     
     # #Validacion de campo
     # @api.constrains('cv')
