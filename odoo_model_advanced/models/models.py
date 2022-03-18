@@ -12,6 +12,11 @@ class Car(models.Model):
     colour = fields.Char(string='Color')
     fuel_litres = fields.Float(string='Litros')
 
+    #Definicio de Constraints
+    _sql_constraints = [
+        # Parametros nombre-restriccion a nivel de sql-mensaje
+        ('number_plate_unique','UNIQUE(number_plate)','El número de matricula debe ser único.'),
+    ]
 
 
 
