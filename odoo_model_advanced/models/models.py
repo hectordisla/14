@@ -22,7 +22,7 @@ class Car(models.Model):
     #Validacion
     @api.constrains('cv','name')
     def _validate(self):
-        if self.name == "":
+        if self.colour == "":
             raise exceptions.ValidationError('El nombre del modelo no puede estar en blanco.')
         elif self.cv <= 0:
             raise exceptions.ValidationError('Los Caballos de fuerza, no pueden estar en 0.')
