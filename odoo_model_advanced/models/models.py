@@ -18,7 +18,7 @@ class Car(models.Model):
     #    ('number_plate_unique','UNIQUE(number_plate)','El número de matricula debe ser único.'),
     #]
 
-    @api.constraint('cv')
+    @api.constrains('cv')
     def _validate_cv(self):
         if self.cv <= 0:
             raise exceptions.ValidationError('Los Caballos de fuerza, no pueden estar en 0.')
